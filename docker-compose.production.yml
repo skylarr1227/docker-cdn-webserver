@@ -7,7 +7,7 @@ services:
     container_name: certbot
     volumes:
       - ./ssl/:/etc/letsencrypt/
-      - /usr/share/nginx/html:/usr/share/nginx/html
+      - /ditto/ditto/shared/duel:/usr/share/nginx/html
     command: certonly -n --webroot -w /usr/share/nginx/html -d <cdn_host>
 
   php:
@@ -27,11 +27,11 @@ services:
     container_name: nginx
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "1234:1234"
       - "443:443"
     volumes:
       - ./ssl/:/etc/letsencrypt/
-      - ./www:/var/www/html
+      - /ditto/ditto/shared/duel:/var/www/html
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/logs:/var/log/nginx/
