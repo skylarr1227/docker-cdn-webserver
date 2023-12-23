@@ -15,7 +15,7 @@ services:
     container_name: php
     restart: unless-stopped
     volumes:
-      - ./www:/var/www/html
+      - /ditto/ditto/shared/duel:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
